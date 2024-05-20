@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Projects</title>
+</head>
+<body>
+    <h1>Projects</h1>
+    <ul>
+        <!-- Dynamically render content from content/projects directory -->
+        <?php
+        $directory = 'content/projects';
+        $files = scandir($directory);
+        foreach ($files as $file) {
+            if ($file !== '.' && $file !== '..') {
+                $project = file_get_contents($directory . '/' . $file);
+                echo "<li>$project</li>";
+            }
+        }
+        ?>
+    </ul>
+</body>
+</html>
